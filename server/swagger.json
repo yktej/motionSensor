@@ -1,0 +1,428 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "API SERVICES",
+        "description": "Api Information"
+    },
+    "host": "13.232.224.69",
+    "basePath": "/api",    
+    "tags": [
+        {
+            "name": "SERVICES",
+            "description": " api services hydroid"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "security": [
+        {
+          "APIKeyHeader": []
+        }
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "SERVICES"
+                ],
+                "description": "login",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": "true",
+                        "description": "Service to login",
+                        "schema": {
+                            "$ref": "#/definitions/login"
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },        
+        "/addProfile": {
+            "post": {
+                "tags": [
+                    "SERVICES"
+                ],
+                "description": "addProfile",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": "true",
+                        "description": "Service to add user",
+                        "schema": {
+                            "$ref": "#/definitions/addProfile"
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },      
+        "/updateUserProfile": {
+            "post": {
+                "tags": [
+                    "SERVICES"
+                ],
+                "description": "update User Profile",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": "true",
+                        "description": "Service to edit user profile",
+                        "schema": {
+                            "$ref": "#/definitions/updateUserProfile"
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/getUserProfile": {
+            "post": {
+                "tags": [
+                    "SERVICES"
+                ],
+                "description": "getUserProfile",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": "true",
+                        "description": "Service to getthe User Profile",
+                        "schema": {
+                            "$ref": "#/definitions/getUserProfile"
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/getMeterReadings": {
+            "post": {
+                "tags": [
+                    "SERVICES"
+                ],
+                "description": "meterReadings",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": "true",
+                        "description": "Service to get the meter Readings",
+                        "schema": {
+                            "$ref": "#/definitions/meterReadings"
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/saveDevice    ": {
+            "post": {
+                "tags": [
+                    "SERVICES"
+                ],
+                "description": "saveDevice",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": "true",
+                        "description": "Service to get the meter Readings",
+                        "schema": {
+                            "$ref": "#/definitions/saveDevice"
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/getLatestMeterReading": {
+            "get": {
+                "tags": [
+                    "SERVICES"
+                ],
+                "description": "latest meter Reading",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions":{
+        "APIKeyHeader":{
+            "type": "apiKey",
+            "in": "header",
+            "name": "token" 
+        }
+    },
+    "definitions": {
+        "login": {
+            "type": "object",
+            "properties": {
+                "userName": {
+                    "type": "string",
+                    "required": true,
+                    "example": "water"
+                },
+                "password": {
+                    "type": "string",
+                    "required": true,
+                    "example": "meter123"
+                }
+            }
+        },
+        "addProfile": {
+            "type": "object",
+            "properties": {
+                "userName": {
+                    "type": "string",
+                    "required": true,
+                    "example": "yk_teja"
+                },
+                "password": {
+                    "type": "string",
+                    "required": true,
+                    "example": "yk_teja@1234"
+                },
+                "email": {
+                    "type": "string",
+                    "required": true,
+                    "example": "yk_teja@gmail.com"
+                },
+                "firstName": {
+                    "type": "string",
+                    "required": true,
+                    "example": "yk_teja"
+                },
+                "lastName": {
+                    "type": "string",
+                    "required": true,
+                    "example": "yk_teja"
+                },
+                "phone": {
+                    "type": "string",
+                    "required": true,
+                    "example": "meter123"
+                },
+                "residentialAddress": {
+                    "type": "string",
+                    "required": true,
+                    "example": "10-33,some street"
+                },
+                "city": {
+                    "type": "string",
+                    "required": true,
+                    "example": "Bangalore"
+                },
+                "state": {
+                    "type": "string",
+                    "required": true,
+                    "example": "Karnataka"
+                },
+                "zip": {
+                    "type": "string",
+                    "required": true,
+                    "example": "500076"
+                }
+            }
+        },
+        "updateUserProfile": {
+            "type": "object",
+            "properties": {
+                "userName": {
+                    "type": "string",
+                    "required": true,
+                    "example": "yk_teja"
+                },
+                "password": {
+                    "type": "string",
+                    "required": true,
+                    "example": "yk_teja@1234"
+                },
+                "email": {
+                    "type": "string",
+                    "required": true,
+                    "example": "yk_teja@gmail.com"
+                },
+                "firstName": {
+                    "type": "string",
+                    "required": true,
+                    "example": "yk_teja"
+                },
+                "lastName": {
+                    "type": "string",
+                    "required": true,
+                    "example": "yk_teja"
+                },
+                "phone": {
+                    "type": "string",
+                    "required": true,
+                    "example": "meter123"
+                },
+                "residentialAddress": {
+                    "type": "string",
+                    "required": true,
+                    "example": "10-33,some street"
+                },
+                "city": {
+                    "type": "string",
+                    "required": true,
+                    "example": "Bangalore"
+                },
+                "state": {
+                    "type": "string",
+                    "required": true,
+                    "example": "Karnataka"
+                },
+                "zip": {
+                    "type": "string",
+                    "required": true,
+                    "example": "500076"
+                }
+            }
+        },
+        "getUserProfile": {
+            "type": "object",
+            "properties": {
+                "userName": {
+                    "type": "string",
+                    "required": true,
+                    "example": "yk_teja"
+                }
+            }
+        },
+        "meterReadings": {
+            "type": "object",
+            "properties": {
+                "fromDate": {
+                    "type": "date",
+                    "example": "01/01/2021"
+                },
+                "toDate": {
+                    "type": "date",
+                    "example": "07/02/2021"
+                },
+                "readingRange":{
+                    "type": "string",
+                    "example": "weekly"                
+                }
+            }
+        },
+        "saveDevice": {
+            "type": "object",
+            "properties": {
+                "organisationID":{
+                    "type": "string",
+                    "example": "1234RPL"                
+                },
+                "deviceID":{
+                    "type": "string",
+                    "example": "1234"                
+                },
+                "serialID":{
+                    "type": "string",
+                    "example": "1234"                
+                },
+                "type":{
+                    "type": "string",
+                    "example": "water"                
+                },
+                "network":{
+                    "type": "string",
+                    "example": "network"                
+                },
+                "user":{
+                    "type": "string",
+                    "example": "admin"                
+                },
+                "country":{
+                    "type": "string",
+                    "example": "IN"                
+                },
+                "leakageLimit":{
+                    "type": "string",
+                    "example": "10"                
+                },
+                "dataTransmissionTime":{
+                    "type": "string",
+                    "example": "weekly"                
+                }
+            }
+        }
+    }
+}
