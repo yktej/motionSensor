@@ -3,7 +3,9 @@ import "./notification.css";
 import "react-calendar/dist/Calendar.css";
 
 import Calendar from "react-calendar";
-//import { AgGridColumn, AgGridReact } from "ag-grid-react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { AgGridColumn, AgGridReact } from "ag-grid-react";
 
 import "ag-grid-enterprise";
 import "ag-grid-community/dist/styles/ag-grid.css";
@@ -23,7 +25,7 @@ type IProps = {
 
 const MotionSensor = (props: IProps) => {
   const [date, setDate] = useState(new Date());
-
+  const [startDate, setStartDate] = useState(new Date());
   useEffect(() => {
     props.getMonthlyReadings()
 
@@ -80,7 +82,19 @@ const MotionSensor = (props: IProps) => {
   };
   return (
     <div>
-      <h1>Motion Sensor</h1>
+      <div className="top_header">
+        <div className="top_header_img">
+          <img className="logo2" src="/assets/images/digilogo.png" alt=""/>
+        </div>
+        <div className="top_header_heading">
+         <p>Motion sensor Analytics</p>
+        </div>
+        <div className="top_header_login">
+         <p>USER</p>
+        </div>
+      </div>
+
+      {/* <h1>Motion Sensor</h1> */}
       <div className="top_datas">
         <div className="data_first_box">
           <h2>Monthly Active</h2>
@@ -116,10 +130,11 @@ const MotionSensor = (props: IProps) => {
             </div>
           </div>
           <Calendar onChange={onChange} value={date} />
+          {/* <DatePicker selected={startDate} onChange={date => setStartDate(date)} /> */}
         </div>
         <div className="chartjs">
           <p>
-            <ApexChart />
+            <ApexChart  />
           </p>
         </div>
       </div>
@@ -143,10 +158,23 @@ const MotionSensor = (props: IProps) => {
         </div>
       </div>
       <div>
-        <MotionSensorTable />
+        
       </div>
       <div className="table">
         <div className="ag-theme-alpine">
+         
+        {/* <MotionSensorTable /> */}
+        {/* <AgGridReact
+                onGridReady={onGridReady}
+                rowData={rowData}>
+                  
+                <AgGridColumn field=" Date"></AgGridColumn>
+                <AgGridColumn field="Time"></AgGridColumn>
+                <AgGridColumn field="Mode"></AgGridColumn>
+                <AgGridColumn field="Time_of_the_Mode"></AgGridColumn>
+              
+            </AgGridReact>
+             */}
         </div>
       </div>
       <footer>
