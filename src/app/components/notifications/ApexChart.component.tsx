@@ -9,15 +9,16 @@ export default class ApexChart extends React.Component {
     
       series: [{
         name: 'ON',
-        data: [44, 55, 41, 67, 22, 43,30,22,29,10]
+        data: [44, 55, 41, 67, 22, 43,30,22,29,10,34,56]
       }, {
         name: 'OFF',
-        data: [13, 23, 20, 8, 13, 27,37,29,40,40]
+        data: [13, 23, 20, 8, 13, 27,37,29,40,40,34,23]
       }],
       options: {
         chart: {
           type: 'bar',
           height: 350,
+          
           stacked: true,
           toolbar: {
             show: true
@@ -38,8 +39,10 @@ export default class ApexChart extends React.Component {
         }],
         plotOptions: {
           bar: {
-            borderRadius: 8,
+            borderRadius:'40%',
             horizontal: false,
+            columnWidth: '20%',
+            barHeight: '100%',
           },
         },
         xaxis: {
@@ -50,10 +53,16 @@ export default class ApexChart extends React.Component {
           position: 'right',
           offsetY: 40
         },
+        // fill: {
+        //   opacity: 1,
+         
+        // },
         fill: {
-          opacity: 1
+          opacity: 1,
+         
         },
-        colors: ['#FF7F00','red'],
+      
+        colors: ['#FBBC05','#ECD79A'],
       },
     
     
