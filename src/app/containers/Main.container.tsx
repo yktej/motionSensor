@@ -16,12 +16,10 @@ import {
 import { getUserFromStore } from "../utils/roleHelper";
 //const _isEmpty = require("lodash.isempty");
 //Water meter
-import SideNav from "../components/sidenav/SideNav.component"
 import Dashboard from "../components/dashboard/Dashboard.component"
 import Header from "../components/header/Header.redux";
 import MeterReading from "../components/meterReading/MeterReading.component";
-import Notifications from "../components/notifications/Notifications.component";
-import TicketStatus from "../components/ticketStatus/TicketStatus.redux";
+import MotionSensor from "../components/notifications/MotionSensor.redux";
 
 const mapDispatchToProps = {
   login,
@@ -41,11 +39,10 @@ const MainContainer = (props: any) => {
     <>
     <div>     
     {props.location.pathname!=='/login' && <Header /> }
-    {props.location.pathname!=='/login' && <SideNav {...props} /> }
-    <div  className={props.location.pathname!=='/login'?"innercontent":''}>     
+    <div >     
       <main>
         <Switch>
-          <Route
+          {/* <Route
             path="/login"
             component={Login}
             exact
@@ -58,9 +55,9 @@ const MainContainer = (props: any) => {
             exact
           />
           <PrivateRoute component={Dashboard} path="/dashboard"  />
-          <PrivateRoute component={MeterReading} path="/meterReading"  />
-          <PrivateRoute component={Notifications} path="/notifications"  />
-          <PrivateRoute component={TicketStatus} path="/ticketStatus"  />
+          <PrivateRoute component={MeterReading} path="/meterReading"  /> */}
+          
+          <PrivateRoute component={MotionSensor} path="/motionSensor"  />
 
           <PrivateRoute component={PageNotFound} />
 

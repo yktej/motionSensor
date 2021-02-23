@@ -9,10 +9,16 @@ import {
 } from "./components/header/Header.saga";
 
 
+import {
+  getSensorReadingsWatcher
+} from "./components/notifications/MotionSensor.saga";
+
+
 
 export default function* rootSaga() {
   yield all([
     loginUserWatcher(),
     logoutUserWatcher(),
+    getSensorReadingsWatcher(),
   ]);
 }

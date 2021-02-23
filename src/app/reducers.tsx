@@ -27,6 +27,9 @@ import { resetPassword_reducer } from "./components/login/resetPassword/ResetPas
 import { forgotPassword_reducer } from "./components/login/forgotPassword/ForgotPassword.reducer";
 import { forgotUserId_reducer } from "./components/login/forgotUserId/ForgotUserId.reducer";
 
+//motion sensor
+import { motionSensor_reducer } from "./components/notifications/MotionSensor.reducer";
+
 
 
 // Combine all reducers.
@@ -52,6 +55,8 @@ const reducers = combineReducers({
   resetPassword: resetPassword_reducer,
   forgotPswd: forgotPassword_reducer,
   forgotUserIdReducer: forgotUserId_reducer,
+  //motion sensor
+  motionSensorReducer: motionSensor_reducer,
 });
 
 export const rootReducer = (state: any, action: any) => {

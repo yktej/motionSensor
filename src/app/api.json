@@ -2,5 +2,6 @@
   "login": "/api/login",
   "logOutApi": "/api/logout",
   "getReqTickets": "/api/getReqTickets",
-  "getMeterReadings": "/api/getMeterReadings"
+  "getMeterReadings": "/api/getMeterReadings",
+  "getSensorReadings": "/getSensorReadings"
 }

@@ -3,7 +3,7 @@ import './Dashboard.scss';
 import BlackTop from './BlackTop.component';
 import NotificationCol from './NotificationCol.component';
 import ColorCards from './ColorCards.component';
-import ApexChart from './ApexChart.component';
+import ApexChart from './ApexChart__firstOne.component';
 
 const Dashboard = () => {
 

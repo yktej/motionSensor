@@ -1,21 +1,34 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import "./notification.css";
 import "react-calendar/dist/Calendar.css";
 
 import Calendar from "react-calendar";
-import { AgGridColumn, AgGridReact } from "ag-grid-react";
+//import { AgGridColumn, AgGridReact } from "ag-grid-react";
 
 import "ag-grid-enterprise";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import ApexChart from './ApexChart.component';
+import MotionSensorTable from "./MotionSensorTable.component";
+
 // import SearchIcon from '@material-ui/icons/Search';
 // import Select from 'react-select';
 
 // const Notifications = (props: IProps) => {
 
-const Notifications = () => {
+type IProps = {
+  getMonthlyReadings : () => void;
+  readings:any;
+}
+
+const MotionSensor = (props: IProps) => {
   const [date, setDate] = useState(new Date());
 
+  useEffect(() => {
+    props.getMonthlyReadings()
+
+  });
+  
   const onChange = (date) => {
     setDate(date);
   };
@@ -67,7 +80,7 @@ const Notifications = () => {
   };
   return (
     <div>
-      <h1>Notifications</h1>
+      <h1>Motion Sensor</h1>
       <div className="top_datas">
         <div className="data_first_box">
           <h2>Monthly Active</h2>
@@ -106,27 +119,7 @@ const Notifications = () => {
         </div>
         <div className="chartjs">
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error ex,
-            optio quos ratione, cum pariatur officia sed ad voluptas fuga
-            suscipit saepe tenetur. Voluptates ducimus amet impedit atque culpa
-            laborum. Cum corrupti enim unde quibusdam, adipisci minima
-            repellendus doloremque recusandae aliquid vel est beatae velit quo a
-            praesentium officiis deleniti magnam quis ea laboriosam rerum ipsa,
-            iure amet aperiam. Fugit. Magnam libero reiciendis aut fugit
-            praesentium tenetur reprehenderit atque modi magni laudantium facere
-            itaque culpa ducimus assumenda soluta, cum sint pariatur velit ipsum
-            minima, et explicabo voluptatem nam. Voluptatum, praesentium. Id
-            veniam, facere nulla harum aliquid dolorem pariatur recr, sit amet
-            consectetur adipisicing elit. Error ex, optio quos ratione, cum
-            pariatur officia sed ad voluptas fuga suscipit saepe tenetur.
-            Voluptates ducimus amet impedit atque culpa laborum. Cum corrupti
-            enim unde quibusdam, adipisci minima repellendus doloremque
-            recusandae aliquid vel est beatae velit quo a praesentium officiis
-            deleniti magnam quis ea laboriosam rerum ipsa, iure amet aperiam.
-            Fugit. Magnam libero reiciendis s tempore dolorum,nte et sed
-            perferendis soluta ipsum aperiam consequuntur. Cum, id natus! Aut
-            sint, quibusdam dolore sapiente magni veritatis molestiae minus?
-            Tempore,{" "}
+            <ApexChart />
           </p>
         </div>
       </div>
@@ -149,14 +142,11 @@ const Notifications = () => {
           </label>
         </div>
       </div>
+      <div>
+        <MotionSensorTable />
+      </div>
       <div className="table">
         <div className="ag-theme-alpine">
-          <AgGridReact onGridReady={onGridReady} rowData={rowData}>
-            <AgGridColumn field="Date"></AgGridColumn>
-            <AgGridColumn field="Time"></AgGridColumn>
-            <AgGridColumn field="Mode"></AgGridColumn>
-            <AgGridColumn field="Time_of_the_Mode"></AgGridColumn>
-          </AgGridReact>
         </div>
       </div>
       <footer>
@@ -168,4 +158,4 @@ const Notifications = () => {
   );
 };
 
-export default Notifications;
+export default MotionSensor;
