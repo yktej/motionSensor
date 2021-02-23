@@ -52,7 +52,8 @@ export default class ApexChart extends React.Component {
         },
         fill: {
           opacity: 1
-        }
+        },
+        colors: ['#FF7F00','red'],
       },
     
     
