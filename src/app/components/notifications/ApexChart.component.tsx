@@ -53,10 +53,10 @@ export default class ApexChart extends React.Component {
           position: 'right',
           offsetY: 40
         },
-        // fill: {
-        //   opacity: 1,
-         
-        // },
+        title: {
+          text: 'Monthly Status',
+          offsetX: 20
+        },
         fill: {
           opacity: 1,
          
