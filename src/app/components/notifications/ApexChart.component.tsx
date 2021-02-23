@@ -21,6 +21,7 @@ let options  =  {
   chart: {
     type: 'bar',
     height: 350,
+    
     stacked: true,
     toolbar: {
       show: true
@@ -41,8 +42,10 @@ let options  =  {
   }],
   plotOptions: {
     bar: {
-      borderRadius: 8,
+      borderRadius:'40%',
       horizontal: false,
+      columnWidth: '20%',
+      barHeight: '100%',
     },
   },
   xaxis: {
@@ -53,10 +56,16 @@ let options  =  {
     position: 'right',
     offsetY: 40
   },
-  fill: {
-    opacity: 1
+  title: {
+    text: 'Monthly Status',
+    offsetX: 20
   },
-  colors: ['#FF7F00','blue'],
+  fill: {
+    opacity: 1,
+   
+  },
+
+  colors: ['#FBBC05','#ECD79A'],
 }
 
 const ApexChart = (props: IProps) => {

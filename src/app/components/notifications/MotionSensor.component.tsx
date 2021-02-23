@@ -136,9 +136,9 @@ const MotionSensor = (props: IProps) => {
       <div>
         <MotionSensorTable readings={props.data}/>
       </div>
-      <div className="table">
+      {/* <div className="table">
         <div className="ag-theme-alpine">
-         
+          */}
         {/* <MotionSensorTable /> */}
         {/* <AgGridReact
                 onGridReady={onGridReady}
@@ -151,8 +151,8 @@ const MotionSensor = (props: IProps) => {
               
             </AgGridReact>
              */}
-        </div>
-      </div>
+        {/* </div>
+      </div> */}
       <footer>
         <div className="footer_main">
          <p>© DJ Interactive Solutions Pvt. Ltd. 2018</p>
