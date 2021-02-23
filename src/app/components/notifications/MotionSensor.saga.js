@@ -10,7 +10,10 @@ export function* getSensorReadings(req) {
       res = yield call(endpoint.get, api.getSensorReadings);
     if (res.data.success) {
            
-        yield put({ type: MonthlyReadingActionTypes.GET_MONTHLY_READING_SUCCEEDED, readings: res.data.readings });
+        yield put({ type: MonthlyReadingActionTypes.GET_MONTHLY_READING_SUCCEEDED, 
+          //readings: res.data.readings 
+          readings:{...res.data} 
+        });
       
     } else {
       yield put({ type: MonthlyReadingActionTypes.GET_MONTHLY_READING_FAILED});

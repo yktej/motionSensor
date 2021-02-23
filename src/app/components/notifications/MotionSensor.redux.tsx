@@ -6,7 +6,7 @@ import { getMonthlyReadings } from "./MotionSensor.action";
 export const mapStateToProps = (state: any) => {
   return {
     //...state,
-    readings: state.readings,
+    readings: state.motionSensorReducer.readings,
   };
 };
 

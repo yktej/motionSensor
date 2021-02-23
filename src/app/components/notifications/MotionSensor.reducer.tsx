@@ -3,24 +3,28 @@ import {
 } from "./MotionSensor.actionTypes";
 
 export const motionSensor_reducer = (
-  state: any = {},
+  state: any = {
+    readings:{data:[]}
+  },
   action: any
 ) => {
   switch (action.type) {
     case MonthlyReadingActionTypes.GET_MONTHLY_READING:
       return {
-        // ...state,
+         ...state,
         loading: true,
       };
     case MonthlyReadingActionTypes.GET_MONTHLY_READING_SUCCEEDED:
       return {
-        loading: false,
+         ...state,
+         loading: false,
         readings:action.readings,
       };
 
     case MonthlyReadingActionTypes.GET_MONTHLY_READING_FAILED: {
       return {
-        loading: false,
+         ...state,
+         loading: false,
       };
     }
     default:

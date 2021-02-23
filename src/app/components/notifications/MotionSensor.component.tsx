@@ -24,10 +24,20 @@ type IProps = {
 const MotionSensor = (props: IProps) => {
   const [date, setDate] = useState(new Date());
 
+  /*useEffect(() => {
+    if(props.readings.data && props.readings.data.length <= 0){
+      props.getMonthlyReadings();
+    }
+  });*/
   useEffect(() => {
-    props.getMonthlyReadings()
+    console.log('props.readings');
+    console.log(props.readings);
+    if(props.readings.data && props.readings.data.length <= 0){
+      props.getMonthlyReadings();
+    }
 
-  });
+  },[props.readings]);
+  
   
   const onChange = (date) => {
     setDate(date);
@@ -143,7 +153,7 @@ const MotionSensor = (props: IProps) => {
         </div>
       </div>
       <div>
-        <MotionSensorTable />
+        <MotionSensorTable readings={props.readings.data}/>
       </div>
       <div className="table">
         <div className="ag-theme-alpine">

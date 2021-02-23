@@ -10,6 +10,7 @@ import ReactTable from 'react-table'
 type IProps = {
  /* getMonthlyReadings : () => void;
   readings:any;*/
+  readings:any;
 }
 
 const data = [{
@@ -37,7 +38,7 @@ const columns = [{
   accessor: 'mode' // String-based value accessors!
 }, {
   Header: 'Time of the mode',
-  accessor: 'timeOfMode',
+  accessor: 'totalOnTime',
 }]
 
 const MotionSensorTable = (props: IProps) => {
@@ -52,7 +53,7 @@ const MotionSensorTable = (props: IProps) => {
  
   return (
     <ReactTable
-    data={data}
+    data={props.readings}
     columns={columns}    
     getTheadThProps={() => {
       return {
