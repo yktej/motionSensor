@@ -25,6 +25,32 @@ export function* getSensorReadings(req) {
   }
 }
 
+export function* filterSensorReadings(req) {
+  try {
+    let res = null;
+
+      res = yield call(endpoint.post, api.filterSensorReadings,req.payload);
+    if (res.data.success) {
+           
+        yield put({ type: MonthlyReadingActionTypes.FILTER_SENSOR_LOGS_SUCCEEDED, 
+          //readings: res.data.readings 
+          data:res.data.data
+        });
+      
+    } else {
+      yield put({ type: MonthlyReadingActionTypes.FILTER_SENSOR_LOGS_FAILED});
+    }
+  } catch (err) {
+    yield put({
+      type: MonthlyReadingActionTypes.FILTER_SENSOR_LOGS_FAILED,
+    });
+  }
+}
+
+
+export function* filterSensorReadingsWatcher() {
+  yield takeLatest(MonthlyReadingActionTypes.FILTER_SENSOR_LOGS, filterSensorReadings);
+}
 
 export function* getSensorReadingsWatcher() {
   yield takeLatest(MonthlyReadingActionTypes.GET_MONTHLY_READING, getSensorReadings);

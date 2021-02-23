@@ -10,7 +10,8 @@ import {
 
 
 import {
-  getSensorReadingsWatcher
+  getSensorReadingsWatcher,
+  filterSensorReadingsWatcher
 } from "./components/notifications/MotionSensor.saga";
 
 
@@ -20,5 +21,6 @@ export default function* rootSaga() {
     loginUserWatcher(),
     logoutUserWatcher(),
     getSensorReadingsWatcher(),
+    filterSensorReadingsWatcher(),
   ]);
 }

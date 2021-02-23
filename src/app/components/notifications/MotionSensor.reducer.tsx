@@ -14,19 +14,35 @@ export const motionSensor_reducer = (
          ...state,
         loading: true,
       };
-    case MonthlyReadingActionTypes.GET_MONTHLY_READING_SUCCEEDED:
-      return {
-         ...state,
-         loading: false,
-        readings:action.readings,
-      };
-
-    case MonthlyReadingActionTypes.GET_MONTHLY_READING_FAILED: {
-      return {
-         ...state,
-         loading: false,
-      };
-    }
+      case MonthlyReadingActionTypes.GET_MONTHLY_READING_SUCCEEDED:
+        return {
+           ...state,
+           loading: false,
+          readings:action.readings,
+        };
+  
+      case MonthlyReadingActionTypes.GET_MONTHLY_READING_FAILED: {
+        return {
+           ...state,
+           loading: false,
+        };
+      }
+      case MonthlyReadingActionTypes.FILTER_SENSOR_LOGS_SUCCEEDED:
+        return {
+           ...state,
+           loading: false,
+           readings:{
+             ...state.readings,
+             data:action.data,
+           }
+        };
+  
+      case MonthlyReadingActionTypes.FILTER_SENSOR_LOGS_FAILED: {
+        return {
+           ...state,
+           loading: false,
+        };
+      }
     default:
       return state;
   }

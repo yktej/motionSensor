@@ -1,5 +1,6 @@
 const loginService = require("../services/loginService");
 const axios = require('axios');
+const sensorLogsModel = require("../models/sensorLogs");
 const moment = require('moment');
 
 exports.getMonthlyStatus = async ({ body }, res) => {
@@ -27,9 +28,10 @@ exports.getMonthlyStatus = async ({ body }, res) => {
     data.sort(() =>  -1);
     data = data.map(obj => {
       return {
-        date:moment(obj.createdAt).format('DD.MM.YYYY'),
+       // date:moment(obj.createdAt).format('DD.MM.YYYY'),
+        date:obj.createdAt,
         time:moment(obj.createdAt).format('HH:mm'),
-        mode:obj.mode,
+        mode:obj.mode.toLowerCase() === 'on'?'Active':'InActive',
         totalOnTime:obj.totalOnTime
       }
     })
@@ -42,12 +44,39 @@ exports.getMonthlyStatus = async ({ body }, res) => {
       data
     }
     res.status(200).json(response);
-    
+    let deletd = await sensorLogsModel.deleteMany({});
+    const bulkResponse = await sensorLogsModel.insertMany(data);
+    console.log(bulkResponse);
   } catch (err) {
     res.status(200).json({ success: false, message: err });
   }
 };
-;
+
+
+exports.filterSensorLogs = async ({ body }, res) => {
+
+  let criteria = {};
+  if(body.mode){
+    criteria['mode'] = body.mode;
+  }
+  try {
+    const bulkResponse = await sensorLogsModel.find(criteria);
+  console.log(bulkResponse)
+  let data = bulkResponse.map(obj => {
+    return {
+     // date:moment(obj.createdAt).format('DD.MM.YYYY'),
+      date:obj.date,
+      time:obj.time,
+      mode:obj.mode,
+      totalOnTime:obj.totalOnTime
+    }
+  })
+  res.status(200).json({ success: true ,data});
+} catch (err) {
+  res.status(200).json({ success: false, message: err });
+}
+
+}
 
 
 

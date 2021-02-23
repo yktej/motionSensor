@@ -20,7 +20,12 @@ import MotionSensorTable from "./MotionSensorTable.component";
 
 type IProps = {
   getMonthlyReadings : () => void;
-  readings:any;
+  //readings:any;
+  filterSensorLogs : (obj:{mode:string}) => void;
+  data:any;
+  currentMonthActive:String;
+  currentMonthInActive:String;
+  monthlyStatus:any;
 }
 
 const MotionSensor = (props: IProps) => {
@@ -33,13 +38,13 @@ const MotionSensor = (props: IProps) => {
   });*/
   const [startDate, setStartDate] = useState(new Date());
   useEffect(() => {
-    console.log('props.readings');
-    console.log(props.readings);
-    if(props.readings.data && props.readings.data.length <= 0){
+    console.log('props.data');
+    console.log(props.data);
+    if(props.data && props.data.length <= 0){
       props.getMonthlyReadings();
     }
 
-  },[props.readings]);
+  },[props.data]);
   
   
   const onChange = (date) => {
@@ -48,49 +53,8 @@ const MotionSensor = (props: IProps) => {
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
 
-  const [rowData, setRowData] = useState([
-    {
-      Date: "02.02.2020",
-      Time: "2:20PM",
-      Mode: "Active",
-      Time_of_the_Mode: " 2:20PM - 2:30PM",
-    },
-    {
-      Date: "02.02.2020",
-      Time: "2:20PM",
-      Mode: "Active",
-      Time_of_the_Mode: " 2:20PM - 2:30PM",
-    },
-    {
-      Date: "02.02.2020",
-      Time: "2:20PM",
-      Mode: "Active",
-      Time_of_the_Mode: " 2:20PM - 2:30PM",
-    },
-    {
-      Date: "02.02.2020",
-      Time: "2:20PM",
-      Mode: "Active",
-      Time_of_the_Mode: " 2:20PM - 2:30PM",
-    },
-    {
-      Date: "02.02.2020",
-      Time: "2:20PM",
-      Mode: "Active",
-      Time_of_the_Mode: " 2:20PM - 2:30PM",
-    },
-    {
-      Date: "02.02.2020",
-      Time: "2:20PM",
-      Mode: "Active",
-      Time_of_the_Mode: " 2:20PM - 2:30PM",
-    },
-  ]);
+ 
 
-  const onGridReady = (params) => {
-    setGridApi(params.api);
-    setGridColumnApi(params.columnApi);
-  };
   return (
     <div>
       <div className="top_header">
@@ -111,12 +75,12 @@ const MotionSensor = (props: IProps) => {
           <h2>Monthly Active</h2>
           <p>
             {" "}
-            <span>&gt;</span> 810 Active Mode
+            <span>&gt;</span> {props.currentMonthActive} 
           </p>
         </div>
         <div className="data_second_box">
           <h2>Monthly INActive</h2>
-          <p> &gt; 810 Active Mode</p>
+          <p> &gt; {props.currentMonthInActive}</p>
         </div>
         <div className="data_third_box">
           <h2>NEW USERS</h2>
@@ -145,31 +109,32 @@ const MotionSensor = (props: IProps) => {
         </div>
         <div className="chartjs">
           <p>
-            <ApexChart  />
+           {/* <ApexChart  series={series}/>  */}
+            <ApexChart  monthlyStatus={props.monthlyStatus}/>
           </p>
         </div>
       </div>
       <div className="radio_buttons">
         <div className="radio_group">
           <label className="label_space">
-            <input type="radio" value="none" name="none" />
+            <input type="radio" value="none" name="none" onClick={() => props.filterSensorLogs({mode:''})}/>
             None
             <span></span>
           </label>
           <label className="label_space">
-            <input type="radio" value="active" name="none" />
+            <input type="radio" value="active" name="none"  onClick={() => props.filterSensorLogs({mode:'Active'})}/>
             Active
             <span></span>
           </label>
           <label className="label_space">
-            <input type="radio" value="active" name="none" />
+            <input type="radio" value="active" name="none"  onClick={() => props.filterSensorLogs({mode:'InActive'})}/>
             Inactive
             <span></span>
           </label>
         </div>
       </div>
       <div>
-        <MotionSensorTable readings={props.readings.data}/>
+        <MotionSensorTable readings={props.data}/>
       </div>
       <div className="table">
         <div className="ag-theme-alpine">

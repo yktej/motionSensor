@@ -8,3 +8,10 @@ export const getMonthlyReadings = () => {
   };
 };
 
+export const filterSensorLogs = (payload:any) => {
+  return {
+    type: MonthlyReadingActionTypes.FILTER_SENSOR_LOGS,
+    payload
+  };
+};
+

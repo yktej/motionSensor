@@ -1,6 +1,6 @@
 import React, { useState ,useEffect} from "react";
 import ReactTable from 'react-table'
-
+import moment from 'moment';
 
 // import SearchIcon from '@material-ui/icons/Search';
 // import Select from 'react-select';
@@ -26,18 +26,24 @@ const data = [{
 }]
 
 const columns = [{
-  Header: 'Date',
-  accessor: 'date' // String-based value accessors!
+      id: 1,
+      Header: 'Date',
+   accessor: (d: any) => { return `${moment(d.date).format("DD.MM")}.2021`},
+  // accessor: (d: any) => d.date,
 }, {
-  Header: 'Time',
+      id: 2,
+      Header: 'Time',
   accessor: 'time',
  // Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
 },
 {
-  Header: 'Mode',
-  accessor: 'mode' // String-based value accessors!
+      id: 3,
+      Header: 'Mode',
+  Cell: props => <button style={{backgroundColor:'red'}}>{props.original.mode}</button> // Custom cell components!
+  //accessor: 'mode' // String-based value accessors!
 }, {
-  Header: 'Time of the mode',
+      id: 4,
+      Header: 'Time of the mode',
   accessor: 'totalOnTime',
 }]
 

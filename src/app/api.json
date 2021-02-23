@@ -3,5 +3,6 @@
   "logOutApi": "/api/logout",
   "getReqTickets": "/api/getReqTickets",
   "getMeterReadings": "/api/getMeterReadings",
-  "getSensorReadings": "/getSensorReadings"
+  "getSensorReadings": "/getSensorReadings",
+  "filterSensorReadings": "/filterSensorReadings"
 }
