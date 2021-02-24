@@ -21,7 +21,7 @@ import MotionSensorTable from "./MotionSensorTable.component";
 type IProps = {
   getMonthlyReadings : () => void;
   //readings:any;
-  filterSensorLogs : (obj:{mode:string}) => void;
+  filterSensorLogs : (obj:{mode:string,date:Date}) => void;
   data:any;
   currentMonthActive:String;
   currentMonthInActive:String;
@@ -29,14 +29,15 @@ type IProps = {
 }
 
 const MotionSensor = (props: IProps) => {
-  const [date, setDate] = useState(new Date());
 
   /*useEffect(() => {
     if(props.readings.data && props.readings.data.length <= 0){
       props.getMonthlyReadings();
     }
   });*/
-  const [startDate, setStartDate] = useState(new Date());
+  const [date, setDate] = useState(new Date());
+  const [mode, setMode] = useState('');
+
   useEffect(() => {
     console.log('props.data');
     console.log(props.data);
@@ -49,11 +50,16 @@ const MotionSensor = (props: IProps) => {
   
   const onChange = (date) => {
     setDate(date);
+    props.filterSensorLogs({date,mode})
   };
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
 
  
+const filterSensorLogsMode = (mode) => {
+  setMode(mode)
+  props.filterSensorLogs({date,mode})
+}
 
   return (
     <div>
@@ -117,17 +123,17 @@ const MotionSensor = (props: IProps) => {
       <div className="radio_buttons">
         <div className="radio_group">
           <label className="label_space">
-            <input type="radio" value="none" name="none" onClick={() => props.filterSensorLogs({mode:''})}/>
+            <input type="radio" value="none" name="none" onClick={() => filterSensorLogsMode('')}/>
             None
             <span></span>
           </label>
           <label className="label_space">
-            <input type="radio" value="active" name="none"  onClick={() => props.filterSensorLogs({mode:'Active'})}/>
+            <input type="radio" value="active" name="none"  onClick={() => filterSensorLogsMode('Active')}/>
             Active
             <span></span>
           </label>
           <label className="label_space">
-            <input type="radio" value="active" name="none"  onClick={() => props.filterSensorLogs({mode:'InActive'})}/>
+            <input type="radio" value="active" name="none"  onClick={() => filterSensorLogsMode('InActive')}/>
             Inactive
             <span></span>
           </label>

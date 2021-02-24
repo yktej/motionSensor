@@ -29,7 +29,7 @@ exports.getMonthlyStatus = async ({ body }, res) => {
     data = data.map(obj => {
       return {
        // date:moment(obj.createdAt).format('DD.MM.YYYY'),
-        date:obj.createdAt,
+        date:add_years(new Date(obj.createdAt),20),
         time:moment(obj.createdAt).format('HH:mm'),
         mode:obj.mode.toLowerCase() === 'on'?'Active':'InActive',
         totalOnTime:obj.totalOnTime
@@ -59,6 +59,17 @@ exports.filterSensorLogs = async ({ body }, res) => {
   if(body.mode){
     criteria['mode'] = body.mode;
   }
+  if(body.date){
+    criteria['date'] = {
+      $gte: moment(body.date)
+      .startOf("day")
+      .toDate(),
+        $lte:  moment(body.date)
+        .endOf("day")
+        .toDate()
+    
+  };
+  }
   try {
     const bulkResponse = await sensorLogsModel.find(criteria);
   console.log(bulkResponse)
@@ -78,6 +89,10 @@ exports.filterSensorLogs = async ({ body }, res) => {
 
 }
 
+function add_years(dt,n) 
+ {
+ return new Date(dt.setFullYear(dt.getFullYear() + n));      
+ }
 
 
 module.exports = exports;
