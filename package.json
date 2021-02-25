@@ -214,5 +214,6 @@
     ],
     "failWithoutAssertions": false,
     "serial": true
-  }
+  },
+  "homepage": "http://localhost:3005/"
 }

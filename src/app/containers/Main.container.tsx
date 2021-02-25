@@ -1,5 +1,6 @@
 import React from "react";
-import { Route, withRouter, Switch, Redirect } from "react-router-dom";
+//import { Route, withRouter, Switch, Redirect } from "react-router-dom";
+import { Route, withRouter, HashRouter as Router, Redirect } from "react-router-dom";
 import Login from "../components/login/Login.redux";
 import PageNotFound from "../components/page_not_found/PageNotFound.component";
 import PrivateRoute from "../routes/privateRoute";
@@ -41,7 +42,8 @@ const MainContainer = (props: any) => {
     {props.location.pathname!=='/login' && <Header /> }
     <div >     
       <main>
-        <Switch>
+        { /* <Switch> */}
+      <Router basename="/" hashType="noslash">
           {/* <Route
             path="/login"
             component={Login}
@@ -57,12 +59,13 @@ const MainContainer = (props: any) => {
           <PrivateRoute component={Dashboard} path="/dashboard"  />
           <PrivateRoute component={MeterReading} path="/meterReading"  /> */}
           
-          <PrivateRoute component={MotionSensor} path="/motionSensor"  />
+          <PrivateRoute component={MotionSensor} path="/"  />
 
           <PrivateRoute component={PageNotFound} />
 
           
-        </Switch>
+        </Router>
+        { /* </Switch> */}
       </main>
     </div>
     </div>
