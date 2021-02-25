@@ -87,7 +87,8 @@ module.exports = {
     historyApiFallback: true,
     writeToDisk: true,
     proxy: {
-      "/api": "http://localhost:3005",
+    //  "/api": "http://localhost:3005",
+      "/api": "http://13.233.66.63",
     },
   },
 };
