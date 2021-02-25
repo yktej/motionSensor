@@ -21,11 +21,12 @@ import MotionSensorTable from "./MotionSensorTable.component";
 type IProps = {
   getMonthlyReadings : () => void;
   //readings:any;
-  filterSensorLogs : (obj:{mode:string,date:Date}) => void;
+  filterSensorLogs : (obj:{mode:string,startDate:Date,endDate:Date}) => void;
   data:any;
   currentMonthActive:String;
   currentMonthInActive:String;
   monthlyStatus:any;
+  series:any;
 }
 
 const MotionSensor = (props: IProps) => {
@@ -35,30 +36,35 @@ const MotionSensor = (props: IProps) => {
       props.getMonthlyReadings();
     }
   });*/
-  const [date, setDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  //const [endDate, setEndDate] = useState(new Date());
   const [mode, setMode] = useState('');
 
   useEffect(() => {
     console.log('props.data');
     console.log(props.data);
-    if(props.data && props.data.length <= 0){
+    if(props.data && props.data.length <= 0 && startDate==null){
       props.getMonthlyReadings();
     }
 
   },[props.data]);
   
   
-  const onChange = (date) => {
-    setDate(date);
-    props.filterSensorLogs({date,mode})
+  const onChange = (dates) => {
+   // let dates = date.split(',');
+    setStartDate(dates[0]);
+    setEndDate(dates[1]);
+    props.filterSensorLogs({startDate:dates[0],endDate:dates[1],mode})
   };
+
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
 
  
 const filterSensorLogsMode = (mode) => {
   setMode(mode)
-  props.filterSensorLogs({date,mode})
+  props.filterSensorLogs({startDate,endDate,mode})
 }
 
   return (
@@ -110,13 +116,19 @@ const filterSensorLogsMode = (mode) => {
               <h1>Search</h1>
             </div>
           </div>
-          <Calendar onChange={onChange} value={date} />
+          <Calendar 
+            onChange={onChange} 
+            //value={startDate} 
+            selectRange
+            />
           {/* <DatePicker selected={startDate} onChange={date => setStartDate(date)} /> */}
         </div>
         <div className="chartjs">
           <p>
-           {/* <ApexChart  series={series}/>  */}
-            <ApexChart  monthlyStatus={props.monthlyStatus}/>
+            <ApexChart  series={props.series}/>  
+           {/* {props.monthlyStatus && 
+            <ApexChart  monthlyStatus={props.monthlyStatus} /> */}
+             
           </p>
         </div>
       </div>

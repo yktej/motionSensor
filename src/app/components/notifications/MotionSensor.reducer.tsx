@@ -34,6 +34,8 @@ export const motionSensor_reducer = (
            readings:{
              ...state.readings,
              data:action.data,
+             currentMonthActive:action.currentMonthActive,
+             currentMonthInActive:action.currentMonthInActive,
            }
         };
   

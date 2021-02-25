@@ -1,22 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactApexChart from 'react-apexcharts'
+import BarChart from './BarChart'
 
 
-interface IProps {
-  monthlyStatus :any;
-}
 
-let series =  [{
-  name: 'ON',
-//  data: [44, 56, 41, 67, 22, 43,30,22,29,20]
-  data: [0,0,0,0,0,0,0,0,0,0,0,0]
-}, {
-  name: 'OFF',
- // data: [13, 23, 20, 8, 13, 27,37,29,40,40]
-  data: [0,0,0,0,0,0,0,0,0,0,0,0]
-}]
 
-   
 let options  =  {
   chart: {
     type: 'bar',
@@ -68,25 +56,38 @@ let options  =  {
   colors: ['#FBBC05','#ECD79A'],
 }
 
+
+
+interface IProps {
+  series:any;
+}
+
 const ApexChart = (props: IProps) => {
 
- 
+ /*     
+let [series,setSeries] = useState([{
+  name: 'ON',
+//  data: [44, 56, 41, 67, 22, 43,30,22,29,20]
+  data: [0,0,0,0,0,0,0,0,0,0,0,0]
+}, {
+  name: 'OFF',
+ // data: [13, 23, 20, 8, 13, 27,37,29,40,40]
+  data: [0,0,0,0,0,0,0,0,0,0,0,0]
+}]);
 
-
-useEffect(() => {
-
-  for(let status in props.monthlyStatus){
-    let index = options.xaxis.categories.indexOf(status);
-    series[0]['data'][index] = props.monthlyStatus[status]['on'];
-    series[1]['data'][index] = props.monthlyStatus[status]['off'];
-  }
-
-},[props.monthlyStatus]);
+*/
     
     return (     
 
 <div id="chart">
-<ReactApexChart options={options} series={series} type="bar" height={350} width='600px'/>
+
+  { /*
+    <ReactApexChart options={options} series={series} type="bar" height={350} width='600px'/>
+  */ }
+
+{props.series && props.series.length > 0 &&
+ <BarChart options={options} series={props.series} ></BarChart>
+}
 </div>
 )
 

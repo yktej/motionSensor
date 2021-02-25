@@ -11,6 +11,7 @@ export const mapStateToProps = (state: any) => {
     currentMonthActive: state.motionSensorReducer.readings.currentMonthActive,
     currentMonthInActive: state.motionSensorReducer.readings.currentMonthInActive,
     monthlyStatus: state.motionSensorReducer.readings.monthlyStatus,
+    series: state.motionSensorReducer.readings.series,
     
     
   };

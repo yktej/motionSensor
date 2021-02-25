@@ -9,16 +9,40 @@ export function* getSensorReadings(req) {
 
       res = yield call(endpoint.get, api.getSensorReadings);
     if (res.data.success) {
-           
+       //start -  fro monthly apex chart
+       
+      let categories = ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct','Nov','Dec'];
+      let series = [{
+        name: 'ON',
+      //  data: [44, 56, 41, 67, 22, 43,30,22,29,20]
+        data: [0,0,0,0,0,0,0,0,0,0,0,0]
+      }, {
+        name: 'OFF',
+       // data: [13, 23, 20, 8, 13, 27,37,29,40,40]
+        data: [0,0,0,0,0,0,0,0,0,0,0,0]
+      }];
+
+      let monthlyStatus =  res.data.monthlyStatus;
+
+      for(let status in monthlyStatus){
+        let index = categories.indexOf(status);
+        series[0]['data'][index] = monthlyStatus[status]['on'];
+        series[1]['data'][index] = monthlyStatus[status]['off'];
+      }
+       //end    
         yield put({ type: MonthlyReadingActionTypes.GET_MONTHLY_READING_SUCCEEDED, 
           //readings: res.data.readings 
-          readings:{...res.data} 
+          readings:{
+            ...res.data,
+            series,
+          } 
         });
       
     } else {
       yield put({ type: MonthlyReadingActionTypes.GET_MONTHLY_READING_FAILED});
     }
   } catch (err) {
+    console.log(err);
     yield put({
       type: MonthlyReadingActionTypes.GET_MONTHLY_READING_FAILED,
     });
@@ -34,7 +58,9 @@ export function* filterSensorReadings(req) {
            
         yield put({ type: MonthlyReadingActionTypes.FILTER_SENSOR_LOGS_SUCCEEDED, 
           //readings: res.data.readings 
-          data:res.data.data
+          data:res.data.data,
+          currentMonthActive:res.data.currentMonthActive,
+          currentMonthInActive:res.data.currentMonthInActive,
         });
       
     } else {

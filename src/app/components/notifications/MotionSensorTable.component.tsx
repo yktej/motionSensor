@@ -39,7 +39,17 @@ const columns = [{
 {
       id: 3,
       Header: 'Mode',
-  Cell: props => <button style={{backgroundColor:'red'}}>{props.original.mode}</button> // Custom cell components!
+  Cell: props => {  
+    let color;
+    if(props.original.mode=='Active'){
+      color='green';
+    }else{
+      color='red';
+    }
+    return (
+  <button style={{backgroundColor:color}}>{props.original.mode}</button> 
+    )
+  } // Custom cell components!
   //accessor: 'mode' // String-based value accessors!
 }, {
       id: 4,
