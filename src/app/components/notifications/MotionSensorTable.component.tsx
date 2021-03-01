@@ -40,14 +40,15 @@ const columns = [{
       id: 3,
       Header: 'Mode',
   Cell: props => {  
-    let color;
+    let color,className='';
     if(props.original.mode=='Active'){
       color='green';
+      className='green';
     }else{
       color='red';
     }
     return (
-  <button style={{backgroundColor:color}}>{props.original.mode}</button> 
+  <button style={{backgroundColor:color}} className={className} >{props.original.mode}</button> 
     )
   } // Custom cell components!
   //accessor: 'mode' // String-based value accessors!

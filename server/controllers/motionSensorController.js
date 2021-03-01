@@ -39,8 +39,8 @@ exports.getMonthlyStatus = async ({ body }, res) => {
     let response = {
       success:true,
       monthlyStatus,
-      currentMonthActive : monthlyStatus[currentMonth]['on'],
-      currentMonthInActive : monthlyStatus[currentMonth]['off'],
+      currentMonthActive : monthlyStatus[currentMonth] ? monthlyStatus[currentMonth]['on'] : 0,
+      currentMonthInActive : monthlyStatus[currentMonth] ? monthlyStatus[currentMonth]['off'] : 0,
       data
     }
     res.status(200).json(response);
