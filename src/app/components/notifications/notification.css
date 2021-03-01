@@ -24,8 +24,8 @@
 .data_first_box,
 .data_second_box,
 .data_third_box {
-  margin: 0rem;
-  width: 23rem;
+  margin: .5rem;
+  width: 22rem;
   height: 6rem;
   background: #F4F7F9;
 border-radius: 6px;
@@ -98,6 +98,7 @@ select {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  flex-wrap: wrap;
   border: none !important;
   width:100%;
 }
@@ -116,29 +117,16 @@ select {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 4.125em !important;
 }
-/* 
-element.style {
-  position: absolute;
-  will-change: transform;
-  top: 0px;
-  left: 0px;
-  transform: translate3d(100px, 371px, 0px);
-}
 
-.react-datepicker-popper[data-placement^="bottom"] {
-  margin-top: 10px;
-}
-
-.react-datepicker-popper {
-  z-index: 999;
-} */
 .chartjs {
-  margin-left: 2rem;
+  margin-left: 0rem;
   background: #F4F7F9;
-  width:70rem;
+  width:65%;
   height:23rem;
 }
-
+#chart{
+  width: 700px;
+}
 /* radiobutton css start here */
 .radio_buttons {
   margin-top: 2rem;
@@ -181,5 +169,72 @@ element.style {
   width: 100%;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 920px) {
+  .top_header{
+    margin:0 0 1rem 0;
+  }
+  .logo2{
+    width: 3rem;
+    height: 2.5rem;
+    margin-left: 1rem;
+  }
+  .top_header_login p{
+    padding-right: 1rem;
+  }
+  .top_datas {
+    justify-content:center;
+    flex-wrap: wrap;
+  }
+  .data_first_box,
+  .data_second_box,
+  .data_third_box {
+    width: 100%;
+  }
+
+  /* top select and search box */
+.select_and_search {
+  width: 100%;
+}
+/* calendar css */
+.calender {
+  margin: 2rem 0 0rem 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: none !important;
+  width:100%;
+}
+.main_calender {
+  width: 100%;
+
+}
+.react-calendar {
+  width:100% !important;
+  max-width: 100%;
+  
+}
+.chartjs {
+  margin-top: 1rem;
+  background: #F4F7F9;
+  width:100%;
+  height:23rem;
+}
+
+/* radiobutton css start here */
+.radio_buttons {
+  margin-top: 2rem;
+
+}
+.label_space {
+  margin-left: 1rem;
+}
+#chart{
+  width: 335px;
+}
+/* footer css here */
+.footer_main {
+  margin-top: 1rem;
+ 
+}
 }

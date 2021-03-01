@@ -5,18 +5,9 @@ import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { AgGridColumn, AgGridReact } from "ag-grid-react";
 
-import "ag-grid-enterprise";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import ApexChart from './ApexChart.component';
 import MotionSensorTable from "./MotionSensorTable.component";
-
-// import SearchIcon from '@material-ui/icons/Search';
-// import Select from 'react-select';
-
-// const Notifications = (props: IProps) => {
 
 type IProps = {
   getMonthlyReadings : () => void;
@@ -86,7 +77,7 @@ const filterSensorLogsMode = (mode) => {
         <div className="data_first_box">
           <h2>Monthly Active</h2>
           <p>
-            {" "}
+           
             <span>&gt;</span> {props.currentMonthActive} 
           </p>
         </div>
@@ -154,23 +145,7 @@ const filterSensorLogsMode = (mode) => {
       <div>
         <MotionSensorTable readings={props.data}/>
       </div>
-      {/* <div className="table">
-        <div className="ag-theme-alpine">
-          */}
-        {/* <MotionSensorTable /> */}
-        {/* <AgGridReact
-                onGridReady={onGridReady}
-                rowData={rowData}>
-                  
-                <AgGridColumn field=" Date"></AgGridColumn>
-                <AgGridColumn field="Time"></AgGridColumn>
-                <AgGridColumn field="Mode"></AgGridColumn>
-                <AgGridColumn field="Time_of_the_Mode"></AgGridColumn>
-              
-            </AgGridReact>
-             */}
-        {/* </div>
-      </div> */}
+    
       <footer>
         <div className="footer_main">
          <p>© DJ Interactive Solutions Pvt. Ltd. 2018</p>

@@ -15,7 +15,7 @@ const BarChart = (props: IProps) => {
     return (     
 
 <div id="chart">
-<ReactApexChart options={props.options} series={props.series} type="bar" height={350} width='600px'/>
+<ReactApexChart options={props.options} series={props.series} type="bar" height={350}/>
 </div>
 )
 
