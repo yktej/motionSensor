@@ -35,6 +35,10 @@ let options  =  {
       columnWidth: '20%',
       barHeight: '100%',
     },
+    bubble: {
+      minBubbleRadius: 'active',
+      maxBubbleRadius: 'inactive',
+    },
   },
   xaxis: {
     categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct','Nov','Dec'],
@@ -52,8 +56,17 @@ let options  =  {
     opacity: 1,
    
   },
+  dataLabels: {
+    enabled: false,
+    enabledOnSeries: undefined,
+    formatter: function (val, opts) {
+        return val
+    },
+  },
 
-  colors: ['#FBBC05','#ECD79A'],
+  labels: ['active', 'inactive'],
+  colors: ['#FBBC05','#ECD79A'], 
+ 
 }
 
 
@@ -63,6 +76,7 @@ interface IProps {
 }
 
 const ApexChart = (props: IProps) => {
+ 
 
  /*     
 let [series,setSeries] = useState([{

@@ -2,8 +2,7 @@ import React, { useState ,useEffect} from "react";
 import ReactTable from 'react-table'
 import moment from 'moment';
 
-// import SearchIcon from '@material-ui/icons/Search';
-// import Select from 'react-select';
+  
 
 // const Notifications = (props: IProps) => {
 
@@ -24,6 +23,8 @@ const data = [{
   mode: 'InActive',
   timeOfMode: '2.40PM-2.50PM',
 }]
+
+
 
 const columns = [{
       id: 1,
@@ -46,6 +47,7 @@ const columns = [{
       className='green';
     }else{
       color='red';
+      className='red';
     }
     return (
   <button style={{backgroundColor:color}} className={className} >{props.original.mode}</button> 

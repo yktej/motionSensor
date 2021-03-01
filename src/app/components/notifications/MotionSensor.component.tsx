@@ -151,6 +151,7 @@ const filterSensorLogsMode = (mode) => {
          <p>© DJ Interactive Solutions Pvt. Ltd. 2018</p>
         </div>
       </footer>
+     
     </div>
   );
 };
