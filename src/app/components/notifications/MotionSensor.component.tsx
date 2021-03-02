@@ -93,7 +93,7 @@ const filterSensorLogsMode = (mode) => {
 
       <div className="calender">
         <div className="main_calender react-calendar">
-          <div className="select_and_search">
+          {false && <div className="select_and_search">
             <div className="search_box">
               <select name="" id="">
                 <option value="select">Select</option>
@@ -106,7 +106,7 @@ const filterSensorLogsMode = (mode) => {
 
               <h1>Search</h1>
             </div>
-          </div>
+          </div>}
           <Calendar 
             onChange={onChange} 
             //value={startDate} 

@@ -13,11 +13,11 @@ export function* getSensorReadings(req) {
        
       let categories = ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct','Nov','Dec'];
       let series = [{
-        name: 'ON',
+        name: 'Active',
       //  data: [44, 56, 41, 67, 22, 43,30,22,29,20]
         data: [0,0,0,0,0,0,0,0,0,0,0,0]
       }, {
-        name: 'OFF',
+        name: 'InActive',
        // data: [13, 23, 20, 8, 13, 27,37,29,40,40]
         data: [0,0,0,0,0,0,0,0,0,0,0,0]
       }];

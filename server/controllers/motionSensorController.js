@@ -61,10 +61,10 @@ exports.filterSensorLogs = async ({ body }, res) => {
   }
   if(body.startDate && body.endDate){
     criteria['date'] = {
-      $gte: moment(body.startDate)
+      $gte: moment(body.startDate).local()
       .startOf("day")
       .toDate(),
-        $lte:  moment(body.endDate)
+        $lte:  moment(body.endDate).local()
         .endOf("day")
         .toDate()    
   };
