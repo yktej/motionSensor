@@ -1,7 +1,8 @@
 body {
-  margin: 100px;
+  margin: 0;
   margin-top: 0px;
 }
+
 .search_bar {
   /* position:absolute;
   right:12rem; */
@@ -9,14 +10,15 @@ body {
   margin-top: 0.4rem;
 }
 .header_hydroid {
-  width: 100%;
-  background-color: black;
-  min-height: 1rem;
-  margin: 0px;
-  height: 3.4rem;
-  -webkit-box-shadow: 2px -4px 17px 0px rgba(199, 197, 199, 1);
-  -moz-box-shadow: 2px -4px 17px 0px rgba(199, 197, 199, 1);
-  box-shadow: 2px -4px 17px 0px rgba(199, 197, 199, 1);
+  display: none;
+  // width: 100%;
+  // background-color: black;
+  // min-height: 1rem;
+  // margin: 0px;
+  // height: 3.4rem;
+  // -webkit-box-shadow: 2px -4px 17px 0px rgba(199, 197, 199, 1);
+  // -moz-box-shadow: 2px -4px 17px 0px rgba(199, 197, 199, 1);
+  // box-shadow: 2px -4px 17px 0px rgba(199, 197, 199, 1);
 }
 .logo {
   width: 6rem;
@@ -53,7 +55,7 @@ body {
 }
 @media screen and (max-width:920px){
   body {
-    margin: 10px;
+    margin: 0;
     margin-top: 0px;
   }
 }
