@@ -81,14 +81,15 @@ const MotionSensor = (props: IProps) => {
                 <span>&gt;</span> {props.currentMonthActive}
               </p>
             </div>
-            <img className="img_fluid" src="/assets/images/vector2.png" alt="" />
+            <img className="img_fluid" src="/assets/images/vectorb9.png" alt="" />
+         
           </div>
           <div className="data_second_box">
             <div>
               <h2>Monthly INActive</h2>
               <p> &gt; {props.currentMonthInActive}</p>
             </div>
-            <img className="img_fluid" src="/assets/images/vector3.png" alt="" />
+            <img className="img_fluid" src="/assets/images/vectorb8.png" alt="" />
           </div>
           <div className="data_third_box">
             <div>
