@@ -79,6 +79,8 @@ const MotionSensorTable = (props: IProps) => {
         className: "tableHeader",
       };
     }}
+    minRows={1}
+    noDataText="No data found"
     getTrProps={({}, rowInfo: any) => {
       if (
         rowInfo &&

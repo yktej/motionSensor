@@ -59,9 +59,8 @@ const MainContainer = (props: any) => {
           <PrivateRoute component={Dashboard} path="/dashboard"  />
           <PrivateRoute component={MeterReading} path="/meterReading"  /> */}
           
-          <PrivateRoute component={MotionSensor} path="/"  />
-
-          <PrivateRoute component={PageNotFound} />
+          <PrivateRoute component={MotionSensor} path="/" exact />
+          { /* <PrivateRoute component={PageNotFound} /> */}
 
           
         </Router>

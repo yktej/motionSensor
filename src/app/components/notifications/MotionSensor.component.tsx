@@ -103,7 +103,7 @@ const MotionSensor = (props: IProps) => {
 
         <div className="calender">
           <div className="main_calender react-calendar">
-            <div className="select_and_search">
+          {false && <div className="select_and_search">
               <div className="search_box">
                 <select name="" id="">
                   <option value="select">Select</option>
@@ -115,8 +115,8 @@ const MotionSensor = (props: IProps) => {
                 {/* <SearchIcon className="white_icon" /> */}
 
                 <h1>Search</h1>
-              </div>
-            </div>
+              </div> 
+            </div> }
             <Calendar
               onChange={onChange}
               //value={startDate}
